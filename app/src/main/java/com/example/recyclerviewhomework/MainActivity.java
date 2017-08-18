@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +19,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setLogo(R.mipmap.icon_home);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         MyAdapter myAdapter = new MyAdapter(initData());
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         List<Pole> list = new ArrayList<>();
         list.add(new Pole(R.drawable.icon_car, R.drawable.group_copy_8, R.drawable.time,
                 "ОСАГО", "EEE0858555888", "Nissan Qashqai",
-                "02.01.2016", 619));
+                "02.01.2016", 625));
 
         list.add(new Pole(R.drawable.icon_key, R.drawable.group_copy_8, R.drawable.time,
                 "Имущество", "EAE0555555888", "г.Москва,ул.Дмитриевского,д.5б кв55",
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         list.add(new Pole(R.drawable.icon_car_kasko, R.drawable.group_copy_8, R.drawable.time,
                 "КАСКО", "EEE0454555555", "Nissan Qashqai",
-                "25.01.2016", 573));
+                "25.01.2016", 578));
 
         list.add(new Pole(R.drawable.icon_medec, R.drawable.group_copy_8, R.drawable.time,
                 "Медецинское страхование", "10088K5567895", "Снегирев Андрей Ларисович",
@@ -78,11 +80,11 @@ public class MainActivity extends AppCompatActivity {
                 "05.05.2017", 130));
 
         list.add(new Pole(R.drawable.icon_key, R.drawable.group_copy_8, R.drawable.time,
-                "Имущество", "OAO0123555978", "Деревня Красные Орлы. Площадь Добрых традиций. Дом 13А.",
+                "Имущество", "OAO0123555978", "Красные Орлы. Площадь Добрых традиций. Дом 13А.",
                 "01.01.2010", 2928));
 
         list.add(new Pole(R.drawable.icon_key, R.drawable.group_copy_8, R.drawable.time,
-                "Имущество", "OOOOAAAA666", "Продовольственный магазин \"СОСТОЯТЕЛЬНЫЕ КРОТЫ\"",
+                "Имущество", "OOOOAAAA666", "Магазин \"СОСТОЯТЕЛЬНЫЕ КРОТЫ\"",
                 "01.01.2013", 1716));
 
         return list;

@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Мои полисы</string>
+
+    <plurals name="plurals">
+        <item quantity="zero">Дней</item>
+        <item quantity="one">%1$d День</item>
+        <item quantity="two">%1$d Дня</item>
+        <item quantity="few">%1$d Дня</item>
+        <item quantity="many">%1$d Дней</item>
+        <item quantity="other">%1$d Дней</item>
+    </plurals>
+
 </resources>
