@@ -77,18 +77,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
 
         //Functions
-        //инициализация ViewHolred'а
+        //инициализация ViewHolder'а
         private void init(final Pole pole, final int position) {
             imagePolicyType.setImageResource(pole.getResIdImagePolicyType());
             imageFollowingTo.setImageResource(pole.getResIdImageNext());
 
-            imageShoppingCart.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    pole.setPolicyStartDate(new Date());
-                    notifyItemChanged(position);
-                    Toast.makeText(v.getContext(), pole.getPolicyType() + " на " + pole.getObjectOfInsurance() + " продлена", Toast.LENGTH_LONG).show();
-                }
+            imageShoppingCart.setOnClickListener(v -> {
+                pole.setPolicyStartDate(new Date());
+                notifyItemChanged(position);
+                Toast.makeText(v.getContext(), pole.getPolicyType() + " на " + pole.getObjectOfInsurance() + " продлена", Toast.LENGTH_LONG).show();
             });
 
             policyType.setText(pole.getPolicyType());
