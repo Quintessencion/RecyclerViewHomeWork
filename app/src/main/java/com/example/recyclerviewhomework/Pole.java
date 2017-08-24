@@ -1,10 +1,13 @@
 package com.example.recyclerviewhomework;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Pole {
+public class Pole implements Parcelable {
     //Fields
     private int resIdImagePolicyType;
     private int resIdImageNext;
@@ -14,6 +17,7 @@ public class Pole {
     private String policyNumber;
     private String objectOfInsurance;
     private Date policyStartDate;
+
     private long validityPeriodPolicy;
 
     private SimpleDateFormat sdf;
@@ -39,6 +43,28 @@ public class Pole {
         }
         this.validityPeriodPolicy = validityPeriodPolicy;
     }
+
+    private Pole(Parcel in) {
+        resIdImagePolicyType = in.readInt();
+        resIdImageNext = in.readInt();
+        resIdImageShoppingCart = in.readInt();
+        policyType = in.readString();
+        policyNumber = in.readString();
+        objectOfInsurance = in.readString();
+        validityPeriodPolicy = in.readLong();
+    }
+
+    public static final Creator<Pole> CREATOR = new Creator<Pole>() {
+        @Override
+        public Pole createFromParcel(Parcel in) {
+            return new Pole(in);
+        }
+
+        @Override
+        public Pole[] newArray(int size) {
+            return new Pole[size];
+        }
+    };
 
     //Functions
     public int getResIdImagePolicyType() {
@@ -101,7 +127,23 @@ public class Pole {
         return validityPeriodPolicy;
     }
 
-    public void setValidityPeriodPolicy(int validityPeriodPolicy) {
+    public void setValidityPeriodPolicy(long validityPeriodPolicy) {
         this.validityPeriodPolicy = validityPeriodPolicy;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+//        dest.writeInt(resIdImagePolicyType);
+//        dest.writeInt(resIdImageNext);
+//        dest.writeInt(resIdImageShoppingCart);
+//        dest.writeString(policyType);
+//        dest.writeString(policyNumber);
+//        dest.writeString(objectOfInsurance);
+//        dest.writeLong(validityPeriodPolicy);
     }
 }
